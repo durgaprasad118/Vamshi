@@ -75,20 +75,26 @@ $(document).ready(function(){
 });
 
  //Email function
- function sendEmail(params) {
+ function sendEmail(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    
     var tempParams = {
-        from_name : document.getElementById("fromName").value,
-        to_name : document.getElementById("toName").value,
-        message : document.getElementById("message").value,
+        from_name: document.querySelector("input[name='name']").value,
+        to_name: "vamshi",
+        email: document.querySelector("input[name='email']").value,
+        message: document.querySelector("textarea[name='message']").value,
+    };
 
-    }
+    const serviceId = "service_u8ztxbp";
+    const templateId = "template_c1hmgvk";
 
-    emaljs.send('gmail-id','template-id',tempParams)
-    .then(function(res)
-    {
-        console.log("success",res.status);
+    emailjs.send(serviceId, templateId, tempParams)
+    .then(function(res) {
+        console.log("success", res.status);
     })
+    .catch(function(error) {
+        console.log("error", error);
+    });
 }
-
 
 
