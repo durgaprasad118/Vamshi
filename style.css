@@ -523,6 +523,11 @@ section .title::after {
     margin-top: 10px;
     justify-content: space-between;
 }
+@media (max-width: 600px) {
+    .owl-nav {
+        margin-top: 0; 
+    }
+}
 button.owl-prev > span {
     font-size: 30px;
 }
